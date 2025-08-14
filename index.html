@@ -1,15 +1,16 @@
-<div id="content"></div>
+<iframe id="myFrame" src="https://file.garden/Z1kmEVWjoTcmNL4i/Eaglercraft_1.12_Offline_en_US.html" style="width: 100%; border: none;"></iframe>
 
 <script>
-  fetch('https://file.garden/Z1kmEVWjoTcmNL4i/Eaglercraft_1.12_Offline_en_US.html')  // URL of the HTML you want to fetch
-    .then(response => {
-      if (!response.ok) throw new Error('Network error');
-      return response.text();  // Get the response as plain text
-    })
-    .then(html => {
-      document.getElementById('content').innerHTML = html;  // Insert the HTML into your page
-    })
-    .catch(error => {
-      console.error('Fetch error:', error);
-    });
+  const iframe = document.getElementById('myFrame');
+
+  // Adjust height once the iframe loads
+  iframe.onload = () => {
+    try {
+      // Access the iframe's content height
+      const iframeHeight = iframe.contentWindow.document.body.scrollHeight;
+      iframe.style.height = iframeHeight + 'px';
+    } catch (err) {
+      console.warn('Cannot access iframe content (cross-origin issue).');
+    }
+  };
 </script>
