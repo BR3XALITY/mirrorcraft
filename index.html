@@ -1,16 +1,33 @@
-<iframe id="myFrame" src="https://file.garden/Z1kmEVWjoTcmNL4i/Eaglercraft_1.12_Offline_en_US.html" style="width: 100%; border: none;"></iframe>
-
-<script>
-  const iframe = document.getElementById('myFrame');
-
-  // Adjust height once the iframe loads
-  iframe.onload = () => {
-    try {
-      // Access the iframe's content height
-      const iframeHeight = iframe.contentWindow.document.body.scrollHeight;
-      iframe.style.height = iframeHeight + 'px';
-    } catch (err) {
-      console.warn('Cannot access iframe content (cross-origin issue).');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden; /* prevent scrollbars */
     }
-  };
-</script>
+    #myFrame {
+      width: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <iframe id="myFrame" src="https://file.garden/Z1kmEVWjoTcmNL4i/Eaglercraft_1.12_Offline_en_US.html"></iframe>
+
+  <script>
+    const iframe = document.getElementById('myFrame');
+
+    function resizeIframe() {
+      iframe.style.height = window.innerHeight + 'px';
+    }
+
+    // Resize on load and whenever the window size changes
+    window.addEventListener('load', resizeIframe);
+    window.addEventListener('resize', resizeIframe);
+  </script>
+</body>
+</html>
