@@ -1,0 +1,15 @@
+<div id="content"></div>
+
+<script>
+  fetch('https://file.garden/Z1kmEVWjoTcmNL4i/Eaglercraft_1.12_Offline_en_US.html')  // URL of the HTML you want to fetch
+    .then(response => {
+      if (!response.ok) throw new Error('Network error');
+      return response.text();  // Get the response as plain text
+    })
+    .then(html => {
+      document.getElementById('content').innerHTML = html;  // Insert the HTML into your page
+    })
+    .catch(error => {
+      console.error('Fetch error:', error);
+    });
+</script>
